@@ -1,0 +1,68 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>nz.org.tushar.test</groupId>
+  <artifactId>apitest</artifactId>
+  <version>1.0.0</version>
+  <packaging>jar</packaging>
+
+  <name>apitest</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <!--  Set the java compiler targets -->
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+  </properties>
+
+  <dependencies>
+  	<!-- Json handling dependency from google -->
+  	<!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+	<dependency>
+	    <groupId>com.google.code.gson</groupId>
+	    <artifactId>gson</artifactId>
+	    <version>2.8.2</version>
+	</dependency>
+	
+	<!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient -->
+	<dependency>
+		<groupId>org.apache.httpcomponents</groupId>
+		<artifactId>httpclient</artifactId>
+		<version>4.5.3</version>
+	</dependency>
+	<!-- Junit Test framework - junit4 -->
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.12</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+  
+  <build>
+  	<finalName>${project.name}-${project.version}</finalName>
+  	<plugins>
+  		<!-- Make this jar executable and add the classpath and main class -->	
+		<plugin>
+		    <groupId>org.apache.maven.plugins</groupId>
+		    <artifactId>maven-jar-plugin</artifactId>
+		    <version>3.0.2</version>
+		    <configuration>
+		        <archive>
+		            <manifest>
+		                <!-- Add the dependencies into the classpath in the manifest file within the jar -->
+		                <addClasspath>true</addClasspath>
+		                <classpathPrefix></classpathPrefix>
+		                <mainClass>nz.org.tushar.test.ApiTest</mainClass>
+		            </manifest>
+		            <manifestEntries>
+		                <Class-Path>. </Class-Path>
+		            </manifestEntries>
+		        </archive>
+		    </configuration>
+		</plugin>
+  	</plugins>
+  </build>
+</project>
